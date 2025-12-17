@@ -1,5 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import Button from "../Button";
 
 const FoodCard = ({ food }) => {
 
@@ -33,11 +34,7 @@ const FoodCard = ({ food }) => {
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <button
-            className="flex-1 bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
-          >
-            Add Now
-          </button>
+        <Button food={food}></Button>
 
           <Link href={`/food/${food.id}`}
             className="bg-gray-100 hover:bg-orange-500 text-orange-500 hover:text-white p-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg group"

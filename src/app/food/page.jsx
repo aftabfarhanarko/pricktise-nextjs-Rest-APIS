@@ -2,16 +2,19 @@ import Card from "@/components/FoodCard/Card";
 import React from "react";
 
 const data = async () => {
+  // ⏳ fetch এর আগেই delay
+
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/random`,
     {
-      next: { revalidate: 1000 },
+      next: { revalidate: 3000 },
     }
   );
 
   const data = await res.json();
   return data.foods || [];
 };
+
 const FoodPages = async () => {
   const foods = await data();
   console.log(foods);

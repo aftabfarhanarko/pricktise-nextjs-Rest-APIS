@@ -1,12 +1,13 @@
 import Card from "@/components/FoodCard/Card";
 import React from "react";
 import CardItems from "./CardItems";
+import SearchText from "@/components/SearchText";
 
-const data = async () => {
+const data = async (search) => {
   // ⏳ fetch এর আগেই delay
 
   const res = await fetch(
-    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random`,
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,
     {
       next: { revalidate: 3000 },
     }
@@ -16,8 +17,12 @@ const data = async () => {
   return data.foods || [];
 };
 
-const FoodPages = async () => {
-  const foods = await data();
+const FoodPages = async ({searchParams}) => {;
+  const  {search = " "} = await searchParams;
+  console.log(search);
+  
+  
+  const foods = await data(search);
   
   console.log(foods);
 
@@ -27,6 +32,9 @@ const FoodPages = async () => {
         <h1 className=" text-3xl font-semibold my-10">
           Total Resturent Foods Collections {foods.length}{" "}
         </h1>
+        <div>
+          <SearchText></SearchText>
+        </div>
 
         <div className=" grid grid-cols-4 gap-5">
           {foods.map((food) => (

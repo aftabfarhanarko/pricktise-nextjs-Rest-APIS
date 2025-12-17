@@ -5,7 +5,6 @@ import React, { useContext } from "react";
 
 const CardItems = () => {
   const { card } = useContext(CardContex);
-  console.log("eyuifguyg", card);
 
   return (
     <div className=" p-2">

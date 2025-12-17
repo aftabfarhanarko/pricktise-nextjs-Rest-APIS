@@ -1,5 +1,6 @@
 import Card from "@/components/FoodCard/Card";
 import React from "react";
+import CardItems from "./CardItems";
 
 const data = async () => {
   // ⏳ fetch এর আগেই delay
@@ -17,6 +18,7 @@ const data = async () => {
 
 const FoodPages = async () => {
   const foods = await data();
+  
   console.log(foods);
 
   return (
@@ -32,7 +34,11 @@ const FoodPages = async () => {
           ))}
         </div>
       </div>
-      <div className=" w-[200px] border mt-27">This is Side Bar Now</div>
+      <div className=" w-[200px] border mt-27">This is Side Bar Now
+        
+        <CardItems></CardItems>
+      
+      </div>
     </div>
   );
 };
